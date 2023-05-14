@@ -3,8 +3,11 @@ fn main() {
 
     println!("Chess :)");
 
-    let mut array: [char; 64] = ['☐'; 64];
 
+    // Create empty array to store board state
+    let mut array: [char; 64] = [' '; 64];
+
+    // We will write these into the array to define the starting position of the board
     let black: [char; 16] = ['R', 'H', 'B', 'Q', 'K', 'B', 'H', 'R', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'];
     let white: [char; 16] = ['p', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'r', 'h', 'b', 'q', 'k', 'b', 'h', 'r'];
     
@@ -17,7 +20,17 @@ fn main() {
         }
     }
 
+
+
     let stdin = io::stdin();
+    let mut iterator: u8 = 0;
+    for piece in array { 
+        if iterator % 8 == 0 {
+            println!("----------------------------------------------");
+        }
+        iterator += 1;
+    }
+
     loop {
         print!("  ");
         for i in 0..=8 {
