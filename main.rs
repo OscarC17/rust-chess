@@ -55,6 +55,10 @@ fn main() {
     // ... Use to_string for elements.
     let mut board: Vec<String> = vec![String::new(); 27];
 
+    const WHITE: bool = false;
+    const BLACK: bool = true;
+    let mut turn: bool = WHITE;
+
     loop {
 
         board[0] = "".to_string();
@@ -104,6 +108,7 @@ fn main() {
         }
 
 
+
         // Generate the pieces of the board
        /* 
         for i in 
@@ -125,7 +130,15 @@ fn main() {
             }
         }
         */
-        println!("Select piece: ");
+        
+        print!("Select piece ");
+
+        if turn == WHITE {
+            println!("(White's turn):")
+        } else {
+            println!("(Black's turn):")
+        }
+
         let mut u_in = String::new();
         match io::stdin().read_line(&mut u_in) {
             Ok(_goes_into_input_above) => {},
@@ -143,9 +156,19 @@ fn main() {
             Err(_no_updates_is_fine) => {},
         }
         let mut to_index = letter_to_num(u_in.chars().nth(0).unwrap()) + 8 * (8 - (u_in.chars().nth(1).unwrap() as usize - 48 as usize));
-        array[to_index] = array[from_index];
-        array[from_index] = ' ';
+        if array[from_index] != ' ' && white_or_black(array[from_index]) == turn {
+            array[to_index] = array[from_index];
+            array[from_index] = ' ';
+        } else {
+            println!("You do not own that piece");
+        }
+
+        turn = !turn;
     }
+}
+
+fn white_or_black(x: char) -> bool {
+    (x as u16) < 96
 }
 
 fn get_x_index(x: i32) -> usize {
