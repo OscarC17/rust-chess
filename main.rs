@@ -50,6 +50,12 @@ fn main() {
         (" ", ""),
     ]);
 
+    let ruleset = HashMap::new();
+
+    ruleset.insert("p", b"%as0001%bs0002%cs0101%ds-101");
+    ruleset.insert("r", b"%ar0100%ar-100%ar0001%ar00-1");
+    ruleset.insert("h", b"%as0102%as0201%as02-1%as01-2%as-102%as-201%as-2-1%as-1-2");
+
 
     // Part A: create array of type String.
     // ... Use to_string for elements.
@@ -186,3 +192,29 @@ fn letter_to_num(alpha: char) -> usize {
         return alpha as usize - 65;
     }
 }
+
+
+
+fn check_move_against_ruleset(dx: usize, dy: usize, rule: &[u8], argument: &[u8]) -> bool {
+    for byte in argument.bytes() {
+        if (byte as char) == '%' 
+    }
+       
+}
+    /*let ruleset = HashMap::from([
+        ("p", "%as0001%bs0002%cs0101%ds-101"),
+        ("r", "%ar0100%ar-100%ar0001%ar00-1"),
+        ("h", "%as0102%as0201%as02-1%as01-2%as-102%as-201%as-2-1%as-1-2");
+    ]);*/
+
+
+
+
+
+
+
+
+
+
+
+
